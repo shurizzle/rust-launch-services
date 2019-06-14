@@ -37,7 +37,7 @@ extern "C" {
         inRoleMask: OptionBits,
         outError: *mut CFErrorRef,
     ) -> CFURLRef;
-    fn LSCopyApplicationURLsForURL(inURL: CFStringRef, inRoleMask: OptionBits) -> CFArrayRef;
+    fn LSCopyApplicationURLsForURL(inURL: CFURLRef, inRoleMask: OptionBits) -> CFArrayRef;
     fn LSCanURLAcceptURL(
         inItemURL: CFURLRef,
         inTargetURL: CFURLRef,
@@ -177,7 +177,7 @@ pub fn default_application_url_content_type(
     }
 }
 
-pub fn application_urls_for_url(url: &CFString, role_mask: LSRolesMask) -> Option<CFArray<CFURL>> {
+pub fn application_urls_for_url(url: &CFURL, role_mask: LSRolesMask) -> Option<CFArray<CFURL>> {
     let res = unsafe { LSCopyApplicationURLsForURL(url.as_concrete_TypeRef(), role_mask.bits()) };
 
     if res.is_null() {
