@@ -1,6 +1,6 @@
 [package]
 name = "launch-services"
-version = "0.0.1"
+version = "0.0.2"
 description = "An incomplete wrapper for Launch Services of Core Services framework (macOS)."
 homepage = "https://github.com/shurizzle/rust-launch-services"
 repository = "https://github.com/shurizzle/rust-launch-services"
